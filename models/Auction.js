@@ -7,8 +7,8 @@ const auctionSchema = new mongoose.Schema({
   minBid: { type: Number, required: true },
   currentBid: { type: Number },
   closingDate: { type: Date, required: true },
-  status: { type: String, enum: ['active', 'closed'], default: 'active' },
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  status: { type: String, default: 'active' },
+  country: { type: String } // New field
 });
 
 module.exports = mongoose.model('Auction', auctionSchema);
