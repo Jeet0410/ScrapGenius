@@ -33,6 +33,7 @@ router.post('/login', async (req, res) => {
 router.get('/register', (req, res) => {
   res.render('register', { 
     title: 'Create Account - ScrapGenius',
+    session: req.session,
     message: req.session.message
   });
   req.session.message = null;
@@ -90,6 +91,31 @@ router.post('/register', async (req, res) => {
 // Logout
 router.get('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/auth?tab=login'));
+});
+
+// GET /login - Render the login page
+router.get('/login', (req, res) => {
+  res.render('login', { 
+    title: 'Login - ScrapGenius', 
+    session: req.session 
+  });
+});
+
+// POST /login - Handle login form submission (example)
+router.post('/login', (req, res) => {
+  // Add your login logic here (e.g., check username/password, set session)
+  const { username, password } = req.body;
+  // Example: Simple login logic (replace with your authentication logic)
+  if (username === 'admin' && password === 'password') {
+    req.session.user = { username };
+    res.redirect('/profile');
+  } else {
+    res.render('login', { 
+      title: 'Login - ScrapGenius', 
+      session: req.session,
+      error: 'Invalid username or password'
+    });
+  }
 });
 
 module.exports = router;

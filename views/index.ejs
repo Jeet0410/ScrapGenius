@@ -1,42 +1,45 @@
 <%- include('partials/header') %>
 
-<main class="container my-5">
-  <!-- Hero Section -->
-  <section class="hero text-center">
-    <h1 class="display-4 fw-bold">Intelligent Scrap Material Trading</h1>
-    <p class="lead text-muted mt-3">Transform the way you buy and sell scrap materials with our AI-powered marketplace. Get real-time pricing, market trends, and material identification.</p>
-    <div class="cta-buttons mt-4">
-      <a href="/register" class="btn btn-primary btn-lg me-2">Get Started</a>
-      <a href="/materials" class="btn btn-outline-secondary btn-lg">Browse Materials</a>
+<!-- Hero Section (Inside Container with Green Background) -->
+<section class="hero py-5">
+  <div class="container" style="background-color: #28a745; border-radius: 10px; padding: 2rem;">
+    <div class="hero-content text-center">
+      <h1 class="display-4 fw-bold text-white">Intelligent Scrap Material Trading</h1>
+      <p class="lead text-white mt-3">Transform the way you buy and sell scrap materials with our AI-powered marketplace. Get real-time pricing, market trends, and material identification.</p>
+      <div class="cta-buttons mt-4">
+        <a href="/register" class="btn btn-custom-register btn-lg" style="transition: transform 0.3s, box-shadow 0.3s;">Register Now</a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<main class="container my-5">
   <!-- Features Section (Buy and Sell Cards) -->
   <section class="features mt-5">
     <div class="row">
       <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm text-white" style="background-color: #28a745; border: none;">
+        <div class="card h-100 shadow-sm border-0 feature-card" style="background-color: #fff; transition: transform 0.3s, background-color 0.3s;">
           <div class="card-body">
             <h5 class="card-title">Buy Material</h5>
             <ul class="list-unstyled">
-              <li>All WasteTrade buyers are fully accredited and certified</li>
+              <li>All ScrapGenius buyers are fully accredited and certified</li>
               <li>Access to thousands of year-round listings</li>
               <li>Filter by specific materials to find suitable listings</li>
             </ul>
-            <a href="/market" class="btn btn-success mt-3">Buy</a>
+            <a href="/market" class="btn btn-success mt-3" style="transition: all 0.3s;">Buy Now</a>
           </div>
         </div>
       </div>
       <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm text-white" style="background-color: #28a745; border: none;">
+        <div class="card h-100 shadow-sm border-0 feature-card" style="background-color: #fff; transition: transform 0.3s, background-color 0.3s;">
           <div class="card-body">
             <h5 class="card-title">Sell Material</h5>
             <ul class="list-unstyled">
               <li>Access our global network of verified recycling facilities</li>
-              <li>Maximise the value of your commodities</li>
+              <li>Maximize the value of your commodities</li>
               <li>Recycle your materials ethically with a carbon-efficient circular economy</li>
             </ul>
-            <a href="/register" class="btn btn-success mt-3">Sell</a>
+            <a href="/register" class="btn btn-success mt-3" style="transition: all 0.3s;">Sell Now</a>
           </div>
         </div>
       </div>
@@ -47,56 +50,86 @@
   <section class="materials mt-5">
     <h2 class="text-center mb-4">Material Categories</h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-      <div class="col">
-        <div class="card h-100 text-center">
-          <img src="m.jpg" class="card-img-top" alt="Metal Scrap">
-          <div class="card-body">
-            <h5 class="card-title">Metal Scrap</h5>
+      <% const materials = [
+        { img: 'm.jpg', title: 'Metal Scrap', alt: 'Metal Scrap' },
+        { img: 'c.jpg', title: 'Construction Materials', alt: 'Construction Materials' },
+        { img: 'pl.jpg', title: 'Plastic Scrap', alt: 'Plastic Scrap' },
+        { img: 'a.jpg', title: 'Automotive Scrap', alt: 'Automotive Scrap' },
+        { img: 'e.jpg', title: 'Electronic (E-Waste)', alt: 'Electronic (E-Waste)' },
+        { img: 'p.jpg', title: 'Packaging Materials', alt: 'Packaging Materials' }
+      ]; %>
+      <% materials.forEach(material => { %>
+        <div class="col">
+          <div class="card h-100 material-card shadow-sm border-0" style="transition: transform 0.3s; background-color: #fff;">
+            <img src="/uploads/<%= material.img %>" class="card-img-top" alt="<%= material.alt %>" style="object-fit: cover; height: 200px;">
+            <div class="card-body text-center">
+              <h5 class="card-title"><%= material.title %></h5>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 text-center">
-          <img src="c.jpg" class="card-img-top" alt="Construction Materials">
-          <div class="card-body">
-            <h5 class="card-title">Construction Materials</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 text-center">
-          <img src="pl.jpg" class="card-img-top" alt="Plastic Scrap">
-          <div class="card-body">
-            <h5 class="card-title">Plastic Scrap</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 text-center">
-          <img src="a.jpg" class="card-img-top" alt="Automotive Scrap">
-          <div class="card-body">
-            <h5 class="card-title">Automotive Scrap</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 text-center">
-          <img src="e.jpg" class="card-img-top" alt="Electronic (E-Waste)">
-          <div class="card-body">
-            <h5 class="card-title">Electronic (E-Waste)</h5>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 text-center">
-          <img src="p.jpg" class="card-img-top" alt="Packaging Materials">
-          <div class="card-body">
-            <h5 class="card-title">Packaging Materials</h5>
-          </div>
-        </div>
-      </div>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- Chatbot Section -->
+  <section class="chatbot-section mt-5 text-center" style="max-width: 500px; margin: 0 auto;">
+    <h3 class="mb-3">Need Help? Ask Our AI Assistant</h3>
+    <div class="chat-container" style="border: 1px solid #28a745; border-radius: 5px; padding: 10px; background-color: #fff;">
+      <div id="chat-messages" style="height: 200px; overflow-y: auto; margin-bottom: 10px;"></div>
+      <input type="text" id="chat-input" class="form-control mb-2" placeholder="Type your message..." style="max-width: 400px; margin: 0 auto;">
+      <button class="btn btn-custom-register" id="send-btn">Send</button>
     </div>
   </section>
 </main>
 
 <%- include('partials/footer') %>
+
+<script>
+  document.getElementById('send-btn').addEventListener('click', sendMessage);
+  document.getElementById('chat-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const message = input.value.trim();
+    if (!message) return;
+
+    // Display user message
+    addMessage(message, 'user');
+    input.value = '';
+
+    // Send to server
+    fetch('/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        addMessage(data.reply, 'bot');
+      })
+      .catch(error => {
+        addMessage('Error: Could not get response.', 'bot');
+        console.error('Error:', error);
+      });
+  }
+
+  function addMessage(text, sender) {
+    const messages = document.getElementById('chat-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${sender}-message`;
+    messageDiv.textContent = text;
+    messages.appendChild(messageDiv);
+    messages.scrollTop = messages.scrollHeight; // Auto-scroll
+  }
+
+  // Basic CSS for chat messages
+  const style = document.createElement('style');
+  style.textContent = `
+    .chat-message { padding: 5px 10px; margin: 5px 0; border-radius: 5px; }
+    .user-message { background-color: #e9ecef; text-align: right; }
+    .bot-message { background-color: #d4edda; text-align: left; }
+  `;
+  document.head.appendChild(style);
+</script>

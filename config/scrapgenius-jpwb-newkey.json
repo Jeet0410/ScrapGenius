@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "scrapgenius-jpwb",
+    "private_key_id": "ecefdc2909cf8aea8d1d0dff9a34133adca03b6a",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCYh4/Es5PyZdXl\n6M2bZINiDSOEMHO87wRhjOCpdh/ApAoqtw0m1Ha1PezWqUjHGMRkvv2b8JWX/T/c\n5OSH1tBXrTeyYY1fyRyOIZPVi8+3NLLbqiNrkm6p6Rss7zT47Zd9cimkmx2I1+fX\nipGL/Cuqpv/WQby45yi/WkSvJ7ppf5Ao4ySBcLHsnDiHsJ/jj1MWlBlmAGJ/NI93\nhKqPICIQ3igXWZu/wAJNdsfTCzG5n74OcbQEsaoSPHgPxB98BKgZRU5AJTHJAB6U\nDOWErpDuW/7bPbsXBr1tdF6ImWDTgW30vD9gtRMsWc0uujOqH4/o3H/BZ2YOafZ6\nzykwStNnAgMBAAECggEANCosn6Og5gYw9Ku9Ybcq/cYrjuJ5OrTt5STmkt48tsgD\nWB95hn2kSZDvpmyH4NuWEzSEjKfnqW7pv/SiOdjcMRgjE8UsMgWYV/2gzyg9NlV2\nFA0ohvoyEbcQ3bnDfpzXMgZwuoR4QdxBRKR16Y+pKXhqx858qioYc/T9x3+JT9nS\neivelB153XPQOfbmfBLfNDKQE85+dU38Y+6g08M9c+uqLcyF7C/S5OPEpwBLklsj\nj3VTIg7pwTGtyc3bjWaMRuWY3zGny/cYwiI5v+lmVbeWPH35Cn+WpO9lRbGkphBk\n+Bj4DL5AXt2gPAXKpqOFX8F+iY221lOQS14JdfO5fQKBgQDXhiqryXlWITxOSRJm\nU329G93aNQsJ8VZjVtwcVi7dFIydzFi8J3nr/OH9rynGTp0PsGJ8/6Jpn9Bf+/1J\nwkkLQ47HdQiUdSA2irThmuWhgIi2dmyK4ciKrC1wI9Yd7Sm5EoHZKtGxWTOkVdSV\nyqsANISHER9gGjaKB3ELThU6xQKBgQC1LMgwzs8aYhxAOsdoBVHV3CxH+GW6AZ2q\nibzcQD16bQVLKPbnzIT8SEUj1lnJRiUCjMOXRBV8AoTeLlA1+pWE74EtsIKmexHC\nbwUVcDAaxGt0V/Q08sRrKSU8IOs7uvTy1cSMcTKVo1ColHsRR0VSM4Ojj+0xi1hf\nFRViqNGoOwKBgE8wbN1R2dNbwtzA3JHce4bQhmN2ueedVTCK6bU/tVhmBIS2YKRB\nnPqooCCmC6NhnzP0izuCchp9LgMWg6pmSJBq8js3NT/XCU8BCBUc5OLCZ3kjah5d\nd2H8gXWCtVmpmnr14d/5a7LOI7tuDf47yTj6EvfNwsl82C0/LroIpqRBAoGAW9SA\n+8w3SQYlj6C7ZcwceKuKfkg3N5qOEdySr4iYIK+VmU0AKOmPFliDQvDovY4iQDKd\nCNTnlt2n/v22hkWm96R183SeJEgI7mZbS0x79XVNicDy9MuAJ1jJmLqOwM24TkVv\nxEez/gizX18zKcTYLBwUQxk2foBEoJ0NI96xtfUCgYBkVV+4oUi4uAcuEjF5FHzL\nw3MOu4IRnkSOifsROWWrdQym/J5p0104bXk7WEEC3DhS28tN7KVSj3LcFmYBg6xM\nlGPXKcWomcaFQKYkDaD0z4VpwVvVxSYu+0f3aZU0nZGNp/5bIgLxsGaiRq6nHKpN\nic0yhR1v+dQWH4ibBKhAxw==\n-----END PRIVATE KEY-----\n",
+    "client_email": "scrapgenius@scrapgenius-jpwb.iam.gserviceaccount.com",
+    "client_id": "109258532335921906219",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/scrapgenius%40scrapgenius-jpwb.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
