@@ -62,7 +62,12 @@
           <% auctions.forEach(auction => { %>
             <div class="col">
               <div class="card h-100 border-0 shadow-sm">
-                <img src="<%= auction.imageUrl || 'https://via.placeholder.com/300x200?text=No+Image'\ %>" class="card-img-top" alt="<%= auction.title %>" style="object-fit: cover; height: 200px;">
+                <img 
+  src="<%= auction.imageUrl || '/uploads/pet_lump.jpeg' %>" 
+  alt="<%= auction.title %>" 
+  onerror="this.src='/uploads/pet_lump.jpeg';" 
+  style="object-fit: cover; height: 200px;"
+>
                 <div class="card-body">
                   <h5 class="card-title"><%= auction.title %></h5>
                   <p class="card-text">
@@ -80,7 +85,7 @@
                 </div>
               </div>
             </div>
-          <% }) %>
+          <% }); %>
         </div>
       <% } %>
     </div>

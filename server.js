@@ -1,56 +1,50 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const path = require('path');
-const connectDB = require('./config/db');
-const authRoutes = require('./routes/auth');
-const apiRoutes = require('./routes/api');
-const materialRoutes = require('./routes/materials');
-const marketRoutes = require('./routes/market');
 require('dotenv').config();
 
 const app = express();
 
-connectDB();
+// Middleware to disable caching
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store');
+  next();
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+app.use('/uploads', express.static('uploads')); // Serve the uploads folder
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI || 'mongodb://localhost:27017/scrapgenius' }),
   cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }));
 
-// Root route
-app.get('/', (req, res) => {
-  res.render('index', { 
-    title: 'ScrapGenius - Home',
-    session: req.session  // Pass session data to the template
-  });
-});
+// Database connection
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/scrapgenius')
+  .then((conn) => console.log('MongoDB connected to:', conn.connection.name))
+  .catch(err => console.error('MongoDB connection error:', err));
+
+// Routes
+const authRoutes = require('./routes/auth');
+const marketRoutes = require('./routes/market');
+const materialRoutes = require('./routes/materials');
+const apiRoutes = require('./routes/api');
 
 app.use('/', authRoutes);
-app.use('/api', apiRoutes);
-app.use('/materials', materialRoutes);
 app.use('/market', marketRoutes);
+app.use('/materials', materialRoutes);
+app.use('/api', apiRoutes);
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
+app.get('/', (req, res) => {
+  res.render('index', { title: 'ScrapGenius - Home', session: req.session });
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
-
-app.get('/', (req, res) => {
-  res.render('index', { 
-    title: 'ScrapGenius',  // Matches OCR branding
-    session: req.session
-  });
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
