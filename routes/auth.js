@@ -1,19 +1,18 @@
 const express = require('express');
-const User = require('../models/user');
+const User = require('../models/User');
 const router = express.Router();
 
-// Combined auth page (default to login tab)
+// Existing auth page
 router.get('/auth', (req, res) => {
   res.render('auth', { 
     title: 'Login or Sign Up - ScrapGenius',
     message: req.session.message,
     session: req.session,
-    activeTab: req.query.tab || 'login' // Default to login, switch with ?tab=signup
+    activeTab: req.query.tab || 'login'
   });
   req.session.message = null;
 });
 
-// Login POST
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -30,21 +29,61 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Signup POST
-router.post('/signup', async (req, res) => {
-  const { username, email, password, confirmPassword } = req.body;
+// Register GET
+router.get('/register', (req, res) => {
+  res.render('register', { 
+    title: 'Create Account - ScrapGenius',
+    message: req.session.message
+  });
+  req.session.message = null;
+});
+
+// Register POST
+router.post('/register', async (req, res) => {
+  const { 
+    prefix, firstName, lastName, jobTitle, phoneCountryCode, phone, email, confirmEmail, 
+    password, confirmPassword, companyName, companyType, companyInterest, materials, referral, terms 
+  } = req.body;
+
+  // Basic validation
+  if (!terms) {
+    req.session.message = 'You must accept the Terms & Conditions';
+    return res.redirect('/register');
+  }
   if (password !== confirmPassword) {
     req.session.message = 'Passwords do not match';
-    return res.redirect('/auth?tab=signup');
+    return res.redirect('/register');
   }
+  if (email !== confirmEmail) {
+    req.session.message = 'Emails do not match';
+    return res.redirect('/register');
+  }
+  if (!materials || materials.length === 0) {
+    req.session.message = 'Please select at least one material of interest';
+    return res.redirect('/register');
+  }
+
   try {
-    const user = new User({ username, email, password });
+    const user = new User({
+      prefix,
+      firstName,
+      lastName,
+      jobTitle,
+      phone: `${phoneCountryCode}${phone}`,
+      email,
+      password,
+      companyName,
+      companyType,
+      companyInterest,
+      materials: Array.isArray(materials) ? materials : [materials], // Ensure array
+      referral
+    });
     await user.save();
     req.session.message = 'Registration successful! Please log in.';
     res.redirect('/auth?tab=login');
   } catch (error) {
-    req.session.message = error.code === 11000 ? 'Username or email exists' : 'Server error';
-    res.redirect('/auth?tab=signup');
+    req.session.message = error.code === 11000 ? 'Email or username already exists' : 'Server error';
+    res.redirect('/register');
   }
 });
 
