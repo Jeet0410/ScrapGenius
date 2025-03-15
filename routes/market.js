@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     const auctions = await Auction.find({ status: 'active' });
     res.render('market', { 
-      title: 'Market - ScrapGenius',
+      title: 'Marketplace - ScrapGenius',
       session: req.session,
       auctions
     });

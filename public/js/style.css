@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* .hero .display-4 {
   color: #333;
   font-weight: 700;
@@ -80,50 +81,45 @@
   font-weight: 500;
 }
 
+=======
+>>>>>>> bf9a5d7ae241ddf65fddb0286eec8a29c3897610
 body {
   background-color: #f8f9fa;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+.navbar-dark .navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
 }
 
-.btn-outline-primary {
-  border-color: #007bff;
-  color: #007bff;
+.badge.bg-success {
+  background-color: #28a745 !important;
 }
 
-.btn-outline-primary:hover {
-  background-color: #007bff;
-  color: white;
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #218838;
 }
 
 .card {
-  border: none;
-  border-radius: 0.5rem;
   transition: transform 0.2s;
 }
 
 .card:hover {
   transform: scale(1.02);
-}
-
-.badge.bg-primary {
-  background-color: #007bff !important;
-}
-
-.form-check-input:checked {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.form-select:focus, .form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }

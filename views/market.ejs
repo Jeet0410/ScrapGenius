@@ -1,132 +1,97 @@
 <%- include('partials/header') %>
 
-<main class="container-fluid my-5">
+<main class="container-fluid py-4">
   <div class="row">
-    <!-- Left Sidebar (Filters) -->
-    <div class="col-md-3 mb-4">
-      <h2 class="mb-4">Marketplace</h2>
-      <button class="btn btn-outline-primary mb-3 w-100" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="false" aria-controls="filtersCollapse">
-        <i class="bi bi-filter me-2"></i> Filters
-      </button>
-      <div class="collapse show" id="filtersCollapse">
-        <div class="card shadow-sm p-3">
-          <div class="mb-3">
-            <label for="search" class="form-label">What are you looking for...</label>
-            <input type="text" id="search" class="form-control" placeholder="What are you looking for...">
-          </div>
-          <div class="mb-3">
-            <label for="location" class="form-label">Location</label>
-            <select id="location" class="form-select">
-              <option selected>All Countries</option>
-              <option>Poland</option>
-              <option>Turkey</option>
-              <option>United States</option>
-              <option>Spain</option>
-              <option>United Kingdom</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="materialType" class="form-label">Material Type</label>
-            <select id="materialType" class="form-select">
-              <option selected>All Types</option>
-              <option>Plastic</option>
-              <option>Fibre</option>
-              <option>Rubber</option>
-              <option>Metal</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="materialGroup" class="form-label">Material Group</label>
-            <select id="materialGroup" class="form-select">
-              <option selected>All Groups</option>
-              <option>LDPE</option>
-              <option>PET</option>
-              <option>PVC</option>
-              <option>PC</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="materials" class="form-label">Materials</label>
-            <select id="materials" class="form-select">
-              <option selected>All Materials</option>
-              <option>PET Lump</option>
-              <option>PVC Pipe Mix</option>
-              <option>LDPE Repro Pellet</option>
-              <option>HDPE Drum Regrind</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="packed" class="form-label">Packed</label>
-            <select id="packed" class="form-select">
-              <option selected>All</option>
-              <option>Baled</option>
-              <option>Loose</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="indoor">
-              <label class="form-check-label" for="indoor">Stored Indoor</label>
+    <!-- Sidebar Filters -->
+    <div class="col-md-3">
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Filters</h5>
+          <form id="filterForm" action="/market" method="GET">
+            <div class="mb-3">
+              <label for="search" class="form-label">Search</label>
+              <input type="text" id="search" name="search" class="form-control" placeholder="What are you looking for...">
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="outdoor">
-              <label class="form-check-label" for="outdoor">Stored Outdoor</label>
+            <div class="mb-3">
+              <label class="form-label">Location</label>
+              <select class="form-select" name="country">
+                <option value="">All Countries</option>
+                <option value="United States">United States</option>
+                <option value="Poland">Poland</option>
+                <option value="Spain">Spain</option>
+                <option value="Romania">Romania</option>
+                <option value="Turkey">Turkey</option>
+                <option value="United Kingdom">United Kingdom</option>
+              </select>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="soldListings">
-              <label class="form-check-label" for="soldListings">Sold Listings</label>
+            <div class="mb-3">
+              <label class="form-label">Material Type</label>
+              <select class="form-select" name="materialType">
+                <option value="">All Types</option>
+                <option value="Plastic">Plastic</option>
+                <option value="Fibre">Fibre</option>
+                <option value="Rubber">Rubber</option>
+                <option value="Metal">Metal</option>
+              </select>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="hideClosed">
-              <label class="form-check-label" for="hideClosed">Hide Closed Listings</label>
+            <div class="mb-3">
+              <label class="form-label">Availability</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="availability" value="availableNow" id="availableNow">
+                <label class="form-check-label" for="availableNow">Available Now</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="availability" value="ongoing" id="ongoing">
+                <label class="form-check-label" for="ongoing">Ongoing Availability</label>
+              </div>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="availableNow">
-              <label class="form-check-label" for="availableNow">Available Now</label>
-            </div>
-          </div>
+            <button type="submit" class="btn btn-success w-100">Apply Filters</button>
+            <button type="button" class="btn btn-outline-secondary w-100 mt-2" onclick="clearFilters()">Clear Filters</button>
+          </form>
         </div>
       </div>
     </div>
 
-    <!-- Right Grid (Listings) -->
+    <!-- Marketplace Grid -->
     <div class="col-md-9">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <% auctions.forEach(auction => { %>
-          <div class="col">
-            <div class="card h-100 shadow-sm">
-              <img src="https://via.placeholder.com/300x200?text=Material+Image" class="card-img-top" alt="Material Image">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-2">
-                  <span class="badge bg-primary me-2">
-                    <% if (new Date(auction.closingDate) > new Date()) { %>
-                      Available From <%= new Date(auction.closingDate).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }) %>
-                    <% } else if (auction.status === 'active') { %>
-                      Available Now
-                    <% } else { %>
-                      Ongoing Availability
-                    <% } %>
-                  </span>
+      <h2 class="mb-4">Marketplace</h2>
+      <% if (auctions.length === 0) { %>
+        <p class="text-muted text-center">No auctions available at the moment.</p>
+      <% } else { %>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="auctionGrid">
+          <% auctions.forEach(auction => { %>
+            <div class="col">
+              <div class="card h-100 border-0 shadow-sm">
+                <img src="<%= auction.imageUrl || 'https://via.placeholder.com/300x200?text=No+Image'\ %>" class="card-img-top" alt="<%= auction.title %>" style="object-fit: cover; height: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title"><%= auction.title %></h5>
+                  <p class="card-text">
+                    <span class="badge bg-success mb-2"><%= auction.quantity %> <%= auction.unit %> Available</span><br>
+                    Country: <%= auction.country || 'N/A' %><br>
+                    Current Bid: $<%= auction.currentBid || auction.minBid %>
+                  </p>
                 </div>
-                <h5 class="card-title"><%= auction.title %></h5>
-                <p class="card-text">
-                  Quantity Available: <%= auction.quantity %> <%= auction.unit %><br>
-                  Country: <%= auction.country || 'N/A' %>
-                </p>
-              </div>
-              <div class="card-footer bg-white border-0">
-                <form action="/api/bid" method="POST" class="d-flex">
-                  <input type="hidden" name="auctionId" value="<%= auction._id %>">
-                  <input type="number" name="amount" class="form-control me-2" min="<%= (auction.currentBid || auction.minBid) + 0.01 %>" step="0.01" placeholder="Enter bid" required>
-                  <button type="submit" class="btn btn-primary">Bid</button>
-                </form>
+                <div class="card-footer bg-light text-center border-0">
+                  <% if (new Date(auction.closingDate) > new Date()) { %>
+                    <span class="badge bg-success">Available Now</span>
+                  <% } else { %>
+                    <span class="badge bg-warning text-dark">Ongoing Availability</span>
+                  <% } %>
+                </div>
               </div>
             </div>
-          </div>
-        <% }) %>
-      </div>
+          <% }) %>
+        </div>
+      <% } %>
     </div>
   </div>
 </main>
 
 <%- include('partials/footer') %>
+
+<script>
+  function clearFilters() {
+    document.getElementById('filterForm').reset();
+    document.getElementById('filterForm').submit();
+  }
+</script>
