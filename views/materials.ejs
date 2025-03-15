@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+<main class="container my-5">
+  <h1 class="text-center mb-4">Available Materials</h1>
+  <p class="text-center text-muted mb-5">Browse our selection of scrap materials for trading.</p>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% materials.forEach(material => { %>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= material.name %></h5>
+            <p class="card-text"><%= material.description %></p>
+            <p class="card-text"><strong>Price:</strong> $<%= material.pricePerKg %>/kg</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Add to Auction</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

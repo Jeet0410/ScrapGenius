@@ -1,0 +1,71 @@
+<%- include('partials/header') %>
+
+<main class="container my-5">
+  <section class="hero text-center">
+    <span class="badge bg-primary mb-3">• AI-Powered Scrap Marketplace</span>
+    <h1 class="display-4 fw-bold"><span class="text-primary">Intelligent</span> Scrap Trading</h1>
+    <p class="lead text-muted">Buy and sell scrap materials with real-time pricing and AI-driven insights.</p>
+    <div class="cta-buttons mt-4">
+      <a href="/auth?tab=signup" class="btn btn-primary btn-lg me-2">Get Started</a>
+      <a href="/materials" class="btn btn-outline-secondary btn-lg">Browse Materials</a>
+    </div>
+  </section>
+
+  <section class="features mt-5">
+    <h2 class="text-center mb-4">Why Choose ScrapGenius?</h2>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <i class="bi bi-robot display-4 text-primary"></i>
+            <h5 class="card-title mt-3">AI-Powered</h5>
+            <p class="card-text">Leverage AI for accurate material identification and pricing.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <i class="bi bi-clock-history display-4 text-primary"></i>
+            <h5 class="card-title mt-3">Real-Time</h5>
+            <p class="card-text">Get live updates on auctions and market trends.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <i class="bi bi-shield-lock display-4 text-primary"></i>
+            <h5 class="card-title mt-3">Secure</h5>
+            <p class="card-text">Trade with confidence using our secure platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="auction-section mt-5">
+    <h2 class="text-center mb-4">Live Auctions</h2>
+    <div id="auction-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+  </section>
+
+  <section class="testimonials mt-5">
+    <h2 class="text-center mb-4">What Our Users Say</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <blockquote class="blockquote text-center">
+          <p class="mb-0">"ScrapGenius made selling my scrap so easy!"</p>
+          <footer class="blockquote-footer mt-2">John D., Scrap Seller</footer>
+        </blockquote>
+      </div>
+      <div class="col-md-6">
+        <blockquote class="blockquote text-center">
+          <p class="mb-0">"The best platform for finding quality materials."</p>
+          <footer class="blockquote-footer mt-2">Sarah K., Buyer</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
