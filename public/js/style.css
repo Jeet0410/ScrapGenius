@@ -45,13 +45,13 @@
 }
 
 .btn-success {
-  background-color: #1d72d3;
-  border-color: #232724;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .btn-success:hover {
-  background-color: #1d72d3;
-  border-color: #232724;
+  background-color: #218838;
+  border-color: #1e7e34;
 }
 
 .card {
@@ -68,11 +68,17 @@
   min-height: 250px;
 }
 
+.materials .card-img-top {
+  object-fit: cover;
+  height: 150px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
 .materials .card-title {
   font-size: 1.25rem;
   font-weight: 500;
 }
-
 
 body {
   background-color: #f8f9fa;
